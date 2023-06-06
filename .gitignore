@@ -1,0 +1,15 @@
+Assets/Imported/*
+Library/*
+ProjectSettings/*
+Temp/*
+*.meta
+*.png
+obj/*
+Packages/*
+UserSettings/*
+Logs/*
+.vsconfig
+*.csproj
+.vs/*
+*.sln
+*.mat
