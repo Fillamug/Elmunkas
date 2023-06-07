@@ -66,7 +66,9 @@ public abstract class Unit : MonoBehaviour
                     AttackTarget?.Find("SelectionCircle").gameObject.SetActive(false);
                 }
             }
-        Destroy(transform.gameObject);
+            Pathfinding.Instance.GetTile(transform.position).Empty = true;
+            Pathfinding.Instance.GetTile(transform.position).PresentUnit = null;
+            Destroy(transform.gameObject);
         }
     }
 
