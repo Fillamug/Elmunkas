@@ -26,8 +26,7 @@ public abstract class Unit : MonoBehaviour
         attackTimer = Stats.attackSpeed;
         health = Stats.maxHealth;
         followTimer = 0;
-        Pathfinding.Instance.GetTile(transform.position).Empty = false;
-        Pathfinding.Instance.GetTile(transform.position).PresentUnit = transform;
+        AddToTile();
     }
 
     protected virtual void Update()
@@ -42,8 +41,10 @@ public abstract class Unit : MonoBehaviour
                 {
                     i++;
                 }
-                if (possibleTarget[i].transform.GetComponentInParent<Unit>()!=null)
-                SetAttackTarget(possibleTarget[i].transform.position);
+                if (possibleTarget[i].transform.GetComponentInParent<Unit>() != null)
+                {
+                    SetAttackTarget(possibleTarget[i].transform.position);
+                }
             }
         }
     }
@@ -51,6 +52,7 @@ public abstract class Unit : MonoBehaviour
     public Transform AttackTarget { get => attackTarget; set => attackTarget = value; }
     public Stats Stats { get => stats; set => stats = value; }
     public Team Team { get => team; set => team = value; }
+    public int Health { get => health; set => health = value; }
 
     public void TakeDamage(int damage)
     {
@@ -66,10 +68,22 @@ public abstract class Unit : MonoBehaviour
                     AttackTarget?.Find("SelectionCircle").gameObject.SetActive(false);
                 }
             }
-            Pathfinding.Instance.GetTile(transform.position).Empty = true;
-            Pathfinding.Instance.GetTile(transform.position).PresentUnit = null;
+            RemoveFromTile();
+            Camera.main.gameObject.GetComponent<UnitControl>().RemoveFromSelection(transform.GetChild(0).gameObject);
             Destroy(transform.gameObject);
         }
+    }
+
+    protected virtual void RemoveFromTile()
+    {
+        Pathfinding.Instance.GetTile(transform.position).Empty = true;
+        Pathfinding.Instance.GetTile(transform.position).PresentUnit = null;
+    }
+
+    protected virtual void AddToTile()
+    {
+        Pathfinding.Instance.GetTile(transform.position).Empty = false;
+        Pathfinding.Instance.GetTile(transform.position).PresentUnit = transform;
     }
 
     public void GetHealed(int heal) {

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c22f565f358414d8ddbc6d0c56ba76, type: 3}
   m_Name: CollectiveFarm
   m_EditorClassIdentifier: 
+  unitName: Collective Farm
   maxHealth: 400
   attackDamage: 0
   attackSpeed: 0
   attackRange: 0
   attackType: 0
   armorType: 3
+  unitIcon: {fileID: 2800000, guid: 5f139b8142f1b18418481ba125b01af8, type: 3}

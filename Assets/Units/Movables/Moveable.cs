@@ -23,19 +23,15 @@ public class Moveable : Unit
         Move();
     }
 
+    public void SetEndPos(Vector3 movementPos, Vector3 targetPos) {
+        endPos = new Vector3(movementPos.x, transform.position.y, movementPos.z);
+        FindPath(0);
+
+        SetAttackTarget(targetPos);
+    }
+
     private void Move()
     {
-        if (transform.GetChild(0).GetComponent<Select>().selected == true)
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                endPos = new Vector3(ControlHelper.GetMouseWorldPos().x, transform.position.y, ControlHelper.GetMouseWorldPos().z);
-                FindPath(0);
-
-                SetAttackTarget(endPos);
-            }
-        }
-
         if (moving)
         {
             if (index != -1)

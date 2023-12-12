@@ -47,6 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 957244fc7507b904b89a1ce47e003bbf, type: 2}
+  team: 0
+  length: 1
+  width: 1
 --- !u!1001 &2220531374674996382
 PrefabInstance:
   m_ObjectHideFlags: 0

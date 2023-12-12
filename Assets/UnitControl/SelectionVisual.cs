@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SelectionVisual : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class SelectionVisual : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !GameObject.Find("MapUI").GetComponent<MapUI>().IsOverUI(Input.mousePosition))
         {
             RaycastHit raycastHit;
 
@@ -27,11 +28,11 @@ public class SelectionVisual : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && !GameObject.Find("MapUI").GetComponent<MapUI>().IsOverUI(Input.mousePosition))
         {
             rectTransform.gameObject.SetActive(false);
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !GameObject.Find("MapUI").GetComponent<MapUI>().IsOverUI(Input.mousePosition))
         {
             if (!rectTransform.gameObject.activeInHierarchy)
             {
