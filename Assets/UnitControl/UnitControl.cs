@@ -140,7 +140,7 @@ public class UnitControl : MonoBehaviour
                 Move();
             }
             else 
-            GameObject.Find("Construction").GetComponent<Construction>().Contruct();
+            GameObject.Find("Construction").GetComponent<Construction>().Construct();
         }
         if (Input.GetMouseButtonUp(0) && !GameObject.Find("MapUI").GetComponent<MapUI>().IsOverUI(Input.mousePosition))
         {
