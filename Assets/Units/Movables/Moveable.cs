@@ -75,8 +75,7 @@ public class Moveable : Unit
                 }
                 else if (!Pathfinding.Instance.GetTile(transform.position).Empty)
                 {
-                    Pathfinding.Instance.GetTile(transform.position).Empty = true;
-                    Pathfinding.Instance.GetTile(transform.position).PresentUnit = null;
+                    RemoveFromTile();
                 }
             }
             else
