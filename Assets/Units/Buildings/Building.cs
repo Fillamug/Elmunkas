@@ -26,7 +26,7 @@ public class Building : Unit
         return 0;
     }
 
-    public List<Vector2Int> getAllPositions(int x, int z) {
+    public List<Vector2Int> GetAllPositions(int x, int z) {
         List<Vector2Int> allPositions = new List<Vector2Int>();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < length; j++) {
@@ -38,7 +38,7 @@ public class Building : Unit
 
     protected override void RemoveFromTile() {
         Pathfinding.Instance.Grid.WorldToGrid(transform.position, out int x, out int z);
-        List<Vector2Int> allPositions = getAllPositions(x, z);
+        List<Vector2Int> allPositions = GetAllPositions(x, z);
         foreach (Vector2Int position in allPositions)
         {
             Pathfinding.Instance.Grid.GetValue(position.x, position.y).PresentUnit = null;
@@ -49,7 +49,7 @@ public class Building : Unit
     protected override void AddToTile()
     {
         Pathfinding.Instance.Grid.WorldToGrid(transform.position, out int x, out int z);
-        List<Vector2Int> allPositions = getAllPositions(x, z);
+        List<Vector2Int> allPositions = GetAllPositions(x, z);
         foreach (Vector2Int position in allPositions)
         {
             Pathfinding.Instance.Grid.GetValue(position.x, position.y).PresentUnit = transform;

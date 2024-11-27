@@ -321,7 +321,7 @@ public class UnitControl : MonoBehaviour
                         selectedObject.GetComponentInParent<Moveable>().SetEndPos(selectedObject.transform.position, mousePosition);
                     }
                     else
-                    selectedObject.GetComponentInParent<Moveable>().SetEndPos(mousePosition + Quaternion.Euler(0, 180, 0) * currentPositions[i], mousePosition);
+                        selectedObject.GetComponentInParent<Moveable>().SetEndPos(mousePosition + Quaternion.Euler(0, 180, 0) * currentPositions[i], mousePosition);
                 }
                 else if (mousePosition.x - unitPosition.x >= 0 && mousePosition.z - unitPosition.z < 0)
                 {

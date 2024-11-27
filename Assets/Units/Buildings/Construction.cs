@@ -21,8 +21,10 @@ public class Construction : MonoBehaviour
             Construct();
         }
         else if (Input.GetKeyDown("t")) {
-            if (constructionType == 0) constructionType = 1;
-            else constructionType = 0;
+            constructionType++;
+            if (constructionType >= constructionTransform.Length) {
+                constructionType = 0;
+            }
         }
     }
 
@@ -31,7 +33,7 @@ public class Construction : MonoBehaviour
 
     public void Construct() {
         Pathfinding.Instance.Grid.WorldToGrid(ControlHelper.GetMouseWorldPos(), out int x, out int z);
-        List<Vector2Int> allPositions = constructionTransform[constructionType].GetComponent<Building>().getAllPositions(x, z);
+        List<Vector2Int> allPositions = constructionTransform[constructionType].GetComponent<Building>().GetAllPositions(x, z);
         bool empty = true;
         foreach (Vector2Int position in allPositions)
         {
